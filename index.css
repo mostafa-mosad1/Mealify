@@ -113,9 +113,10 @@ body {
   border-top-right-radius: 35%;
   border-bottom-left-radius: 35%;
   border-bottom-right-radius: 35%;
+  border: none;
   transition: all 0.5s;
 }
-.landing .container .flex .col-0 p{
+.landing .container .flex .col-0 p {
   transition: all 0.5s;
 }
 .landing .container .flex .col-0 button:hover {
@@ -157,7 +158,7 @@ body {
 .landing .container .flex .col-0 .link a:hover {
   color: red;
 }
-.landing .container .flex .col-0 .link a:hover p{
+.landing .container .flex .col-0 .link a:hover p {
   color: red;
 }
 
@@ -229,7 +230,8 @@ body {
   gap: 40px 0px;
 }
 .chefs .item {
-  width: 100%;
+  width: 80%;
+  margin: auto;
   background-color: white;
   overflow: hidden;
   text-align: center;
@@ -301,16 +303,26 @@ body {
   flex-direction: column;
   gap: 20px;
 }
-.gallery .item {
+.gallery .flex .col {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+
+.gallery  .image { 
   position: relative;
   overflow: hidden;
 }
-
-.gallery .item .image img {
+.gallery  .image img {
   display: block;
   width: 100%;
+  height: 100%;
+  border-radius: 6px;
+  object-fit: cover;
+  transition: all 1s;
 }
-.gallery .item .des {
+.gallery  .des {
   position: absolute;
   bottom: -100%;
   left: 0;
@@ -322,17 +334,21 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  transition: all 1s;
 }
-.gallery .item .image:hover .des {
-  top: 0;
+.gallery  .image:hover img {
+  scale: 1.2;
 }
-.gallery .item .des h3 {
+.gallery  .image:hover .des {
+  bottom: 0;
+}
+.gallery  .des h3 {
   font-size: 35px;
   color: white;
   margin: 10px;
   font-weight: 700;
 }
-.gallery .item .des p {
+.gallery  .des p {
   font-size: 25px;
 }
 
@@ -367,7 +383,6 @@ body {
   font-weight: 700;
 }
 .contact .category .item p {
-  background-color: red;
   width: 100%;
   font-size: 16px;
   color: #7d7d7d;
@@ -406,6 +421,7 @@ textarea {
   font-size: 20px;
 }
 .contact form button {
+  border: none;
   display: flex;
   margin: auto;
   margin-top: 20px;
@@ -469,7 +485,7 @@ footer .col-1 .item {
   column-gap: 10px;
   padding-left: 15px;
 }
-footer .col-1 .item i{
+footer .col-1 .item i {
   color: red;
   font-size: 25px;
 }
@@ -480,10 +496,10 @@ footer .col-3 {
   order: 2;
   width: 100%;
 }
-footer .col-3 h3{
+footer .col-3 h3 {
   font-size: 30px;
 }
-footer .col-3 .form  {
+footer .col-3 .form {
   width: 100%;
   display: flex;
   justify-content: flex-start;
@@ -498,7 +514,7 @@ footer .col-3 .form input {
 }
 footer .col-3 .form button {
   padding: 10px;
-  background-color:#E61414 ;
+  background-color: #e61414;
   font-size: 20px;
 }
 footer .col-3 .links {
@@ -519,9 +535,6 @@ footer .col-3 .links a:hover {
   transform: translateX(20px);
   background-color: rgb(157, 140, 140);
 }
-footer .col-3 {}
-footer .col-3 {}
-footer .col-3 {}
 
 @media screen and (min-width: 670px) {
   .mood {
@@ -545,7 +558,8 @@ footer .col-3 {}
     gap: 2%;
   }
   .chefs .item {
-    width: 48%;
+    width: 40%;
+    margin: auto;
     background-color: white;
     transition: all 1s;
     overflow: hidden;
@@ -555,14 +569,47 @@ footer .col-3 {}
   .gallery .flex {
     display: flex;
     flex-direction: row;
-    flex-wrap: wrap;
     gap: 20px;
   }
-  .gallery .item {
-    width: 40%;
+  .gallery .flex .col {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  
+  .gallery  .image { 
     position: relative;
     overflow: hidden;
   }
+  .gallery  .image img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    border-radius: 6px;
+    object-fit: cover;
+  }
+  .gallery  .des {
+    position: absolute;
+    bottom: -100%;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #000000a0;
+    color: white;
+    text-align: center;
+    transition: all 1s;
+  }
+  .gallery  .image:hover .des {
+    text-align: center;
+    bottom: 0;
+  }
+  .gallery  .des h3 {
+    font-size: 25px;
+    color: white;
+    font-weight: 700;
+  }
+  
   /* contact */
   .contact .category {
     display: flex;
@@ -573,21 +620,26 @@ footer .col-3 {}
   .contact .category .item {
     width: 48%;
   }
+  .contact .category .item .col-1 {
+    width: 48%;
+  }
   /* footer */
   footer .sec {
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: row;
-  justify-content: space-between;
-  row-gap: 15px;
-}
-footer .col-0,.col-1,.col-3 {
-  width: 48%;
-}
-footer .col-3 {
-  order: 2;
-  width: 100%;
-}
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: space-between;
+    row-gap: 15px;
+  }
+  footer .col-0,
+  .col-1,
+  .col-3 {
+    width: 48%;
+  }
+  footer .col-3 {
+    order: 2;
+    width: 100%;
+  }
 }
 
 @media screen and (min-width: 992px) {
@@ -650,7 +702,6 @@ footer .col-3 {
 
   /* landing */
   .landing {
-    border: 1px solid brown;
     position: relative;
     top: 90px;
     left: 0;
@@ -662,8 +713,8 @@ footer .col-3 {
     width: 100%;
     justify-content: space-between;
   }
-  .landing .container .flex .col-0  {
-    text-align:start;
+  .landing .container .flex .col-0 {
+    text-align: start;
   }
   .landing .container .flex .col-0 .sub-flex {
     display: flex;
@@ -678,24 +729,13 @@ footer .col-3 {
     gap: 2%;
   }
   .chefs .item {
-    width: 32%;
+    width: 30%;
     background-color: white;
     transition: all 1s;
     overflow: hidden;
     text-align: center;
   }
-  /* gallery */
-  .gallery .flex {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    gap: 20px;
-  }
-  .gallery .item {
-    width: 30%;
-    position: relative;
-    overflow: hidden;
-  }
+  
   /* cotact */
   .contact form .row-0 {
     width: 100%;
@@ -706,13 +746,15 @@ footer .col-3 {
     margin-top: 30px;
   }
   /* footer */
-  footer .col-0,.col-1,.col-3 {
-  width: 30%;
-}
-footer .col-3 {
-  order: 0;
-  width: 30%;
-}
+  footer .col-0,
+  .col-1,
+  .col-3 {
+    width: 30%;
+  }
+  footer .col-3 {
+    order: 0;
+    width: 30%;
+  }
 }
 @media screen and (min-width: 1200px) {
 }
